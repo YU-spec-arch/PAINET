@@ -1,0 +1,29 @@
+DEEPSORT:
+  REID_CKPT: "deep_sort/deep_sort/deep/checkpoint/ckpt.t7"
+  MAX_DIST: 0.2
+  MIN_CONFIDENCE: 0.3
+  NMS_MAX_OVERLAP: 0.4
+  MAX_IOU_DISTANCE: 0.7
+  MAX_AGE: 70
+  N_INIT: 3
+  NN_BUDGET: 100
+  
+
+#这段内容描述的是DeepSORT算法的一些关键参数设置，DeepSORT是一种用于视频中多目标跟踪（Multiple Object Tracking, MOT）的算法，它结合了卡尔曼滤波、匈牙利匹配算法和深度学习的ReID（行人重识别）技术。
+#
+#- `REID_CKPT`: 指定ReID模型的检查点文件路径，即预训练的人体再识别模型权重文件。"deep_sort/deep_sort/deep/checkpoint/ckpt.t7" 表示该模型权重文件位于这个目录下。
+#
+#- `MAX_DIST`: 最大距离阈值，用于衡量两个候选框之间的距离相似度。当两个框的距离超过此阈值时，认为这两个框不太可能是同一个目标。
+#
+#- `MIN_CONFIDENCE`: 最小置信度阈值，来自ReID模型或其他检测器对目标身份的识别置信度，低于这个阈值的目标会被忽略。
+#
+#- `NMS_MAX_OVERLAP`: 非极大值抑制（Non-Maximum Suppression, NMS）的最大重叠率阈值，用于去除目标检测阶段的冗余框。
+#
+#- `MAX_IOU_DISTANCE`: 最大交并比距离，用于在匹配过程中判断两个边界框是否属于同一目标的依据。
+#
+#- `MAX_AGE`: 目标的最大存活周期，如果一个目标在连续`MAX_AGE`帧内都无法成功匹配，则认为该目标已经消失。
+#
+#- `N_INIT`: 初始化目标所需的最少连续帧数，只有当一个目标在连续`N_INIT`帧中都被检测到，才会将其初始化为一个新的跟踪目标。
+#
+#- `NN_BUDGET`: K近邻搜索的最大预算，限制每帧中用于匹配的最近邻数量，有助于优化算法运行效率。
+
